@@ -1,0 +1,229 @@
+:root {
+  --fundo: #2A2725;
+  --roxo: #422853;
+  --lilas: #8C62B6;
+  --ciano: #3DA9FC;
+  --creme: #F7F4EF;
+  --suave: rgba(247, 244, 239, 0.75);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--creme);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6vw;
+  background: rgba(42, 39, 37, 0.96);
+  border-bottom: 1px solid var(--lilas);
+}
+
+nav a {
+  margin-left: 1rem;
+  color: var(--creme);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+nav a:hover {
+  color: var(--ciano);
+}
+
+.brand {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: auto;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.roxo {
+  background: var(--roxo);
+}
+
+.hero,
+.projeto {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.projeto {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+h1,
+h2 {
+  margin: 0.5rem 0 1rem;
+  font-family: Georgia, serif;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+p {
+  color: var(--suave);
+}
+
+span {
+  color: var(--ciano);
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+/* Foto de apresentação e Projeto Acta */
+.hero > img,
+.projeto > img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+}
+
+/* Carrossel */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: min(1200px, 100%);
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+.viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.25rem 13%;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 min(74%, 38rem);
+  margin: 0;
+  padding: 0.65rem;
+  background: var(--roxo);
+  border: 1px solid var(--lilas);
+  border-radius: 16px;
+  scroll-snap-align: center;
+}
+
+.roxo .card {
+  background: var(--fundo);
+}
+
+/* Fotos do carrossel inteiras: sem cortar rosto ou objeto importante */
+.card img {
+  width: 100%;
+  height: 320px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  background: var(--fundo);
+  border-radius: 12px;
+}
+
+figcaption {
+  padding: 0.8rem 0.25rem 0.15rem;
+  color: var(--creme);
+  font-size: 0.85rem;
+}
+
+.arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 2.75rem;
+  border: 1px solid var(--lilas);
+  border-radius: 50%;
+  background: var(--fundo);
+  color: var(--creme);
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.arrow:hover {
+  border-color: var(--ciano);
+  color: var(--ciano);
+}
+
+footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--lilas);
+  color: var(--suave);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+
+  .hero,
+  .projeto {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .card {
+    flex-basis: 84%;
+  }
+
+  .track {
+    padding: 0.25rem 8%;
+  }
+
+  .arrow {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-basis: 2.25rem;
+  }
+}

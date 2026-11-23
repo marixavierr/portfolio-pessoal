@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariana Xavier — Portfólio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <a class="brand" href="#sobre">MX.</a>
+    <div class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#projeto">Projeto</a>
+      <a href="#familia">Família</a>
+      <a href="#amigos">Amigos</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#cultura">Cultura</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="sobre" class="section container hero">
+      <div>
+        <span>SOBRE</span>
+        <h1>Mariana Xavier.</h1>
+        <p>Oi, me chamo Mariana de Oliveira Xavier, tenho 15 anos. Gosto de coisas que fogem do óbvio, sou completamente obcecada por insetos, aracnídeos, diplópodes e quilópodes. Esse ano trabalhei principalmente no front-end do app do nosso projeto interdisciplinar, o Acta, e curti muito mexer com código e visual. Aqui reuni um pouco dos meus projetos, fotos e das coisas que eu gosto, espero que gostem!</p>
+      </div>
+
+      <img src="img/perfil.jpeg" alt="Mariana Xavier">
+    </section>
+
+    <section id="projeto" class="section roxo">
+      <div class="container projeto">
+        <img src="img/equipe-acta.jpeg" alt="Equipe do projeto Acta">
+
+        <div>
+          <span>PROJETO INTERDISCIPLINAR</span>
+          <h2>Acta</h2>
+          <p>O meu projeto interdisciplinar é o Acta, uma plataforma de melhoria contínua que utiliza o ciclo PDCA para ajudar empresas a identificar problemas, planejar soluções, organizar ações e acompanhar resultados. A plataforma conecta gestores e colaboradores, permitindo gerenciar atividades, acompanhar metas, analisar indicadores e registrar aprendizados em um só lugar, tornando a resolução de problemas mais organizada e eficiente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="familia" class="section container">
+      <span>BASE DE TUDO</span>
+      <h2>Família & Pets</h2>
+      <p>Meu irmão Matheus, meu pai, minha mãe e meus gatos amo muito todos eles. O Ryuk é um persa cinza e o Gato é um Maine Coon laranja.</p>
+      <div class="carousel" data-gallery="familia"></div>
+    </section>
+
+    <section id="amigos" class="section roxo">
+      <div class="container">
+        <span>GALERA & ESCOLA</span>
+        <h2>Amigos & Escola</h2>
+        <p>Minha melhor amiga de infância é a Cecília. Na escola, a Nath é minha melhor amiga e tenho até um widget no celular com fotos dela.</p>
+      </div>
+      <div class="carousel" data-gallery="amigos"></div>
+    </section>
+
+    <section id="hobbies" class="section container">
+      <span>PERSONALIDADE</span>
+      <h2>Hobbies & Curiosidades</h2>
+      <p>Gosto de fazer doces, pesquisar sobre interesses pessoais, velas, esmalte holográfico, hambúrguer, suco de soja sabor maçã e música.</p>
+      <div class="carousel" data-gallery="hobbies"></div>
+    </section>
+
+    <section id="cultura" class="section roxo">
+      <div class="container">
+        <span>GOSTOS</span>
+        <h2>Música, Filmes e Livros</h2>
+        <p>Gosto muito de rock e reggae. Amo filmes de terror e livros com temáticas pesadas; no momento estou lendo <em>1984</em>, de George Orwell.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Feito com carinho e código por Mariana Xavier • 2026</footer>
+
+  <script>
+    const galerias = {
+      familia: [
+        ["img/familia.png", "Família"],
+        ["img/gatos-juntos.jpeg", "Gatos juntos"],
+        ["img/eu-e-ryuk.jpeg", "Eu e Ryuk"],
+        ["img/gato-laranja.jpeg", "Gato laranja"]
+      ],
+      amigos: [
+        ["img/amigos-pizza.jpeg", "Pizza com amigos"],
+        ["img/eu-e-nath.jpeg", "Eu e Nath"],
+        ["img/eu-e-cecilia.jpeg", "Eu e Cecília"],
+        ["img/widget-celular.jpeg", "Widget"]
+      ],
+      hobbies: [
+        ["img/escorpiao.png", "Escorpião"],
+        ["img/hamburguer.jpeg", "Hambúrguer"],
+        ["img/brownie.jpeg", "Brownie"],
+        ["img/suco-maca.jpeg", "Suco de maçã"],
+        ["img/esmalte.jpeg", "Esmalte holográfico"],
+        ["img/caneta.jpeg", "Caneta"],
+        ["img/vela-livro.jpeg", "Vela e livro"]
+      ]
+    };
+
+    document.querySelectorAll("[data-gallery]").forEach((carousel) => {
+      const imagens = galerias[carousel.dataset.gallery];
+
+      carousel.innerHTML = `
+        <button class="arrow prev" type="button">←</button>
+        <div class="viewport">
+          <div class="track">
+            ${imagens.map(([foto, legenda]) => `
+              <figure class="card">
+                <img src="${foto}" alt="${legenda}">
+                <figcaption>${legenda}</figcaption>
+              </figure>
+            `).join("")}
+          </div>
+        </div>
+        <button class="arrow next" type="button">→</button>
+      `;
+
+      const track = carousel.querySelector(".track");
+      const move = () => track.querySelector(".card").offsetWidth + 16;
+
+      carousel.querySelector(".prev").onclick = () =>
+        track.scrollBy({ left: -move(), behavior: "smooth" });
+
+      carousel.querySelector(".next").onclick = () =>
+        track.scrollBy({ left: move(), behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
